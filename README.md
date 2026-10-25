@@ -116,7 +116,10 @@ ya está caliente o con poco espacio libre, la cámara es lo primero que falla.
 ### Si se quedó trabada y no puedes salir
 Fuerza el reinicio (no borra nada):
 - **Samsung:** mantén *Bajar volumen* + *Encendido* unos 7–10 s.
-- **Otros Android:** mantén *Encendido* (o *Encendido* + *Bajar volumen*) 10–15 s.
+- **Xiaomi / Redmi / POCO:** mantén **solo** *Encendido* 10–15 s. No uses
+  *Encendido* + *Bajar volumen*: en Xiaomi eso puede abrir el modo *Fastboot*
+  (si pasa, mantén *Encendido* 15 s y reinicia normal).
+- **Otros Android:** mantén *Encendido* 10–15 s.
 - **iPhone 8 o posterior:** pulsa y suelta *Subir volumen*, luego *Bajar
   volumen*, y mantén el botón lateral hasta ver la manzana.
 
