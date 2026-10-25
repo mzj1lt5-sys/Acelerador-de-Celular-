@@ -127,6 +127,22 @@ alerta() { ALERTAS+=("$1"); }
     alerta "Apps tipo 'limpiador/acelerador/antivirus' detectadas: $(echo "$SOSPECHOSAS" | tr '\n' ' ')— suelen EMPEORAR el calor y la lentitud; considera desinstalarlas."
   fi
 
+  titulo "CÁMARA"
+  echo "-- Apps con permiso de cámara permitido (pueden competir por ella):"
+  sh_ cmd appops query-op --user 0 CAMERA allow || echo "(No disponible en esta versión de Android)"
+  echo "-- Clientes de cámara activos ahora mismo:"
+  CLIENTES=$(sh_ dumpsys media.camera | grep -iE 'Client package|Package name' | sort -u)
+  echo "${CLIENTES:-(ninguno)}"
+  if [[ -n "$CLIENTES" ]]; then
+    alerta "Hay apps usando la cámara ahora mismo: $(echo "$CLIENTES" | tr -s ' \n' ' '). Si no la estás usando tú, ciérralas o quítales el permiso de cámara."
+  fi
+  echo "-- Tarjetas SD / almacenamiento externo:"
+  SD=$(sh_ sm list-volumes public)
+  echo "${SD:-(ninguna)}"
+  if [[ -n "$SD" ]]; then
+    alerta "Hay una tarjeta SD. Si la cámara guarda ahí y la tarjeta es lenta o está dañada, la cámara se traba: cambia el destino a 'Almacenamiento interno' y prueba."
+  fi
+
   titulo "ANIMACIONES"
   for k in window_animation_scale transition_animation_scale animator_duration_scale; do
     echo "$k = $(sh_ settings get global $k)"

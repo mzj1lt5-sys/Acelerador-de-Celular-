@@ -108,7 +108,55 @@ cobertura, es el módem buscando antena. Activa el modo avión o usa Wi‑Fi.
 
 ---
 
-## 7. Diagnóstico automático (Android + PC)
+## 7. La cámara se traba, no deja salir o la imagen va lenta
+
+La cámara es lo que **más exige** al procesador y a la memoria. Si el teléfono
+ya está caliente o con poco espacio libre, la cámara es lo primero que falla.
+
+### Si se quedó trabada y no puedes salir
+Fuerza el reinicio (no borra nada):
+- **Samsung:** mantén *Bajar volumen* + *Encendido* unos 7–10 s.
+- **Otros Android:** mantén *Encendido* (o *Encendido* + *Bajar volumen*) 10–15 s.
+- **iPhone 8 o posterior:** pulsa y suelta *Subir volumen*, luego *Bajar
+  volumen*, y mantén el botón lateral hasta ver la manzana.
+
+### Pasos para arreglarla (en orden)
+1. **Déjalo enfriar** antes de abrir la cámara: con calor, el sistema la frena
+   y puede desactivar el flash o cerrarla.
+2. **Libera espacio** (sección 5). Con el almacenamiento casi lleno, la cámara
+   no puede guardar y se congela.
+3. **Saca la tarjeta SD de la ecuación:** en los ajustes de la cámara cambia
+   *Ubicación de almacenamiento* a **Almacenamiento interno** y prueba. Una SD
+   lenta, falsa o dañada es causa muy común de que la cámara se trabe.
+4. **Borra caché y datos de la cámara (Android):** Ajustes → Aplicaciones →
+   (mostrar apps del sistema) → *Cámara* → Almacenamiento → **Borrar caché**.
+   Si sigue igual, **Borrar datos**: solo resetea los ajustes de la cámara,
+   **no borra tus fotos**. Haz lo mismo con *Fotos/Galería*.
+   En Samsung también: Cámara → ⚙️ → *Restablecer ajustes*.
+5. **Baja la exigencia de la cámara:**
+   - Video en **1080p a 30 fps** en lugar de 4K o 60 fps.
+   - Desactiva *Optimizador de escenas* / IA, *Fotos en movimiento* /
+     *Live Photos*, *HDR automático*, filtros de belleza y la estabilización
+     "súper estable".
+6. **Revisa qué otras apps usan la cámara:** WhatsApp, Instagram, TikTok,
+   Snapchat, linternas, lectores de QR o apps de filtros pueden quedarse
+   "agarrando" la cámara. Ajustes → Privacidad → Administrador de permisos →
+   Cámara: quítale el permiso a las que no necesites y desinstala linternas o
+   apps de filtros de terceros.
+7. **Actualiza** el sistema, la app de Cámara y *Actualización del sistema de
+   Google Play* (Ajustes → Seguridad).
+8. **Prueba en modo seguro** (sección 3). Si ahí la cámara va fluida, la culpa
+   es de una app instalada.
+9. **Prueba otra app de cámara** (por ejemplo *Open Camera* de la Play Store):
+   - Si con ella **va fluida**, el problema es la app de cámara del sistema
+     (pasos 4, 5 y 7, o restablecer de fábrica).
+   - Si **también se traba**, puede ser el módulo de la cámara (hardware):
+     respalda y prueba un restablecimiento de fábrica; si persiste, servicio
+     técnico.
+
+---
+
+## 8. Diagnóstico automático (Android + PC)
 
 `diagnostico_android.sh` revisa tu teléfono desde una computadora y genera un
 informe con alertas. **Solo lee datos; no cambia ni borra nada.**
@@ -121,6 +169,7 @@ Revisa:
 - Apps que mantienen el teléfono despierto con la pantalla apagada (*wakelocks*)
 - Apps instaladas y presencia de "limpiadores/aceleradores"
 - Días sin reiniciar
+- Apps con permiso de cámara, apps usando la cámara y tarjeta SD
 
 ### Cómo usarlo
 1. En el teléfono: Ajustes → Acerca del teléfono → toca 7 veces
@@ -148,7 +197,7 @@ adb shell settings put global animator_duration_scale 0.5
 
 ---
 
-## 8. Si nada de lo anterior funciona
+## 9. Si nada de lo anterior funciona
 
 1. **Revisa la salud de la batería.**
    iPhone: Ajustes → Batería → Estado y carga (si es < 80 %, cámbiala).
@@ -171,5 +220,6 @@ adb shell settings put global animator_duration_scale 0.5
 - [ ] Limpiadores/aceleradores/antivirus desinstalados
 - [ ] Al menos 15–20 % de almacenamiento libre
 - [ ] Brillo automático, 60 Hz, GPS/Bluetooth apagados si no se usan
+- [ ] Cámara: caché borrada, guarda en memoria interna, video 1080p 30 fps
 - [ ] Diagnóstico ejecutado y alertas atendidas
 - [ ] Salud de batería revisada
